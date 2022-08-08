@@ -10,6 +10,6 @@ class Item
   end
 
   def price
-    @info[:price]
+    @info[:price].gsub('$','').to_f
   end
 end

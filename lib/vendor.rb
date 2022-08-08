@@ -14,4 +14,8 @@ class Vendor
   def stock(item, quantity)
     @inventory[item] += quantity
   end
+
+  def potential_revenue
+    @inventory.map { |item| item[0].price * check_stock(item[0]) }.reduce(:+)
+  end
 end

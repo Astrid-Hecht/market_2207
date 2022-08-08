@@ -18,8 +18,8 @@ describe Item do
     end
 
     it 'Item has a price' do
-      expect(@item1.price).to eq "$0.75"
-      expect(@item2.price).to eq '$0.50'
+      expect(@item1.price).to eq 0.75
+      expect(@item2.price).to eq 0.50
     end
   end
 end
