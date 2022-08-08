@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative '../lib/market'
+require 'pry'
 
 describe Market do
   before :each do
@@ -58,6 +59,9 @@ describe Market do
   context 'Iteration 3' do
     before :each do
       @vendor3.stock(@item3, 10)
+      @market.add_vendor(@vendor1)
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
     end
 
     it 'can return list of total inventory' do
@@ -72,11 +76,11 @@ describe Market do
             vendors: [@vendor1]
           },
           @item3 => {
-            quantity: 50,
+            quantity: 35,
             vendors: [@vendor2, @vendor3]
           },
           @item4 => {
-            quantity: 35,
+            quantity: 50,
             vendors: [@vendor2]
           }
         }

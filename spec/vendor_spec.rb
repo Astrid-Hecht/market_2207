@@ -1,6 +1,5 @@
 require 'rspec'
 require_relative '../lib/vendor'
-require 'pry'
 
 describe Item do
   context 'Iteration 1' do

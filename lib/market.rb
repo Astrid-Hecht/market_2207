@@ -20,4 +20,15 @@ class Market
   def vendors_that_sell(item)
     @vendors.find_all { |vendor| vendor.inventory.map { |stock_item| stock_item[0].name }.include?(item) }
   end
+
+  def total_inventory
+    # binding.pry
+    @vendors.flat_map { |vendor| vendor.inventory.keys }.uniq.reduce(Hash.new) do |hash, item|
+      hash[item] = {
+            quantity: @vendors.sum { |vendor| vendor.check_stock(item)},
+            vendors: vendors_that_sell(item.name)
+          }
+      hash
+    end
+  end
 end
