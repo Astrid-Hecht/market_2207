@@ -1,6 +1,5 @@
 require 'rspec'
 require_relative '../lib/market'
-require 'pry'
 
 describe Market do
   before :each do

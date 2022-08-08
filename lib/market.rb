@@ -25,7 +25,7 @@ class Market
   end
 
   def total_inventory
-    @vendors.flat_map { |vendor| vendor.inventory.keys }.uniq.reduce(Hash.new) do |hash, item|
+    @vendors.flat_map { |vendor| vendor.inventory.keys }.uniq.reduce({}) do |hash, item|
       hash[item] = {
         quantity: @vendors.sum { |vendor| vendor.check_stock(item) },
         vendors: vendors_that_sell(item.name)
@@ -35,11 +35,11 @@ class Market
   end
 
   def overstocked_items
-    total_inventory.find_all { |item| (item[1][:quantity] > 50) && (item[1][:vendors].count > 1)}.map { |item| item[0] }
+    total_inventory.find_all { |item| (item[1][:quantity] > 50) && (item[1][:vendors].count > 1) }.map { |item| item[0] }
   end
 
   def sorted_item_list
-    total_inventory.map { |item| item[0].name}.sort
+    total_inventory.map { |item| item[0].name }.sort
   end
 
   def date_gen
