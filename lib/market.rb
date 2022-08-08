@@ -35,4 +35,8 @@ class Market
   def overstocked_items
     total_inventory.find_all { |item| (item[1][:quantity] > 50) && (item[1][:vendors].count > 1)}.map { |item| item[0] }
   end
+
+  def sorted_item_list
+    total_inventory.map { |item| item[0].name}.sort
+  end
 end
