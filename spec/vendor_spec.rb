@@ -1,5 +1,4 @@
 require 'rspec'
-require_relative '../lib/item'
 require_relative '../lib/vendor'
 require 'pry'
 

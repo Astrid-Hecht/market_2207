@@ -1,5 +1,4 @@
 require 'rspec'
-require_relative '../lib/item'
 require_relative '../lib/market'
 
 describe Market do
@@ -44,7 +43,7 @@ describe Market do
       @market.add_vendor(@vendor1)
       @market.add_vendor(@vendor2)
       @market.add_vendor(@vendor3)
-      expect(@market.vendors).to eq([@vendor1.name, @vendor2.name, @vendor3.name])
+      expect(@market.vendor_names).to eq([@vendor1.name, @vendor2.name, @vendor3.name])
     end
 
     it 'can find vendors that sell an item' do

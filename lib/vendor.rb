@@ -1,3 +1,5 @@
+require_relative 'item'
+
 class Vendor
   attr_reader :name,
               :inventory
