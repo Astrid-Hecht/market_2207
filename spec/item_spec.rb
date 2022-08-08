@@ -9,11 +9,17 @@ describe Item do
     end
 
     it 'Item exists' do
-      expect(item).to be_an_instance_of Item
+      expect(@item1).to be_an_instance_of Item
     end
 
     it 'Item has a name' do
-      expect(item.name).to eq 'toilet paper'
+      expect(@item1.name).to eq 'Peach'
+      expect(@item2.name).to eq 'Tomato'
+    end
+
+    it 'Item has a price' do
+      expect(@item1.price).to eq "$0.75"
+      expect(@item2.price).to eq '$0.50'
     end
   end
 end
