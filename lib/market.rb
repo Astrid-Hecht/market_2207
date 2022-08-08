@@ -1,12 +1,15 @@
 require_relative 'vendor'
+require 'date'
 
 class Market
   attr_reader :name,
-              :vendors
+              :vendors,
+              :date
 
   def initialize(name)
     @name = name
     @vendors = []
+    @date = date_gen.strftime("%d/%m/%Y")
   end
 
   def add_vendor(vendor)
@@ -22,7 +25,6 @@ class Market
   end
 
   def total_inventory
-    # binding.pry
     @vendors.flat_map { |vendor| vendor.inventory.keys }.uniq.reduce(Hash.new) do |hash, item|
       hash[item] = {
         quantity: @vendors.sum { |vendor| vendor.check_stock(item) },
@@ -38,5 +40,9 @@ class Market
 
   def sorted_item_list
     total_inventory.map { |item| item[0].name}.sort
+  end
+
+  def date_gen
+    Date.today
   end
 end

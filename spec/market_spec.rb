@@ -105,7 +105,7 @@ describe Market do
     end
 
     it 'has a date' do
-      expect(@market.date).to eq(Date.today.strftime("%d/%m/%y"))
+      expect(@market.date).to eq(Date.today.strftime("%d/%m/%Y"))
       allow_any_instance_of(Market).to receive(:date_gen) { Date.new(2015, 10, 7) }
       @market2 = Market.new('Test Foods')
       expect(@market2.date).to eq('07/10/2015')
