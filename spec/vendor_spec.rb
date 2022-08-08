@@ -45,8 +45,8 @@ describe Item do
     end
   end
 
-  describe 'Iteration 2' do
-    before (:each) do
+  context 'Iteration 2' do
+    before(:each) do
       @item1 = Item.new({ name: 'Peach', price: "$0.75" })
       @item2 = Item.new({ name: 'Tomato', price: '$0.50' })
       @vendor1 = Vendor.new("Rocky Mountain Fresh")
