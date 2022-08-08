@@ -95,4 +95,30 @@ describe Market do
       expect(@market.sorted_item_list).to eq(["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"])
     end
   end
+
+  context 'Iteration 4' do
+    before :each do
+      @market.add_vendor(@vendor1)
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
+      @item5 = Item.new({ name: 'Onion', price: '$0.25' })
+    end
+
+    it 'has a date' do
+      expect(@market.date).to eq(Date.today.strftime("%d/%m/%y"))
+      allow_any_instance_of(Market).to receive(:date_gen) { Date.new(2015, 10, 7) }
+      @market2 = Market.new('Test Foods')
+      expect(@market2.date).to eq('07/10/2015')
+    end
+
+    it 'can sell' do
+      expect(@market.sell(@item1, 200)).to eq false
+      expect(@market.sell(@item5, 1)).to eq false
+      expect(@market.sell(@item5, 5)).to eq true
+      expect(@vendor2.check_stock(@item4)).to eq 45
+      expect(@market.sell(@item1, 40)).to eq true
+      expect(@vendor1.check_stock(@item1)).to eq 0
+      expect(@vendor3.check_stock(@item1)).to eq 60
+    end
+  end
 end
