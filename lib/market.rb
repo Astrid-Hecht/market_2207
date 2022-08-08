@@ -45,4 +45,18 @@ class Market
   def date_gen
     Date.today
   end
+
+  def sell(item, quantity)
+    if total_inventory[item] && total_inventory[item][:quantity] > quantity
+      total_inventory[item][:vendors].each do |vendor|
+        until quantity.zero? || vendor.inventory[item].zero?
+          vendor.inventory[item] -= 1
+          quantity -= 1
+        end
+      end
+      true
+    else
+      false
+    end
+  end
 end

@@ -114,7 +114,7 @@ describe Market do
     it 'can sell' do
       expect(@market.sell(@item1, 200)).to eq false
       expect(@market.sell(@item5, 1)).to eq false
-      expect(@market.sell(@item5, 5)).to eq true
+      expect(@market.sell(@item4, 5)).to eq true
       expect(@vendor2.check_stock(@item4)).to eq 45
       expect(@market.sell(@item1, 40)).to eq true
       expect(@vendor1.check_stock(@item1)).to eq 0
